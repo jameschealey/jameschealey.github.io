@@ -100,7 +100,7 @@
       font-size: clamp(16px, 1.4vw, 18px);
       line-height: 1.6;
       color: var(--muted);
-      max-width: 58ch;
+      max-width: 60ch;
     }
 
     .cta-row{display:flex; flex-wrap:wrap; gap:10px; margin-top:18px}
@@ -216,6 +216,19 @@
       line-height:1.55;
       font-size: 14.5px;
     }
+    .kpis{
+      display:flex; flex-wrap:wrap; gap:10px;
+      margin-top: 14px;
+    }
+    .kpi{
+      padding:10px 12px;
+      border-radius: 14px;
+      border: 1px solid var(--line);
+      background: rgba(255,255,255,.03);
+      min-width: 170px;
+    }
+    .kpi strong{display:block; font-size: 16px; letter-spacing: -.2px}
+    .kpi span{display:block; color: var(--muted); margin-top:4px; font-size: 13px}
 
     /* Footer */
     footer{
@@ -244,9 +257,9 @@
 
       <div class="links" aria-label="Site">
         <a href="#work">Work</a>
+        <a href="#impact">Impact</a>
         <a href="#projects">Projects</a>
         <a href="#contact">Contact</a>
-        <!-- Replace with your actual URLs -->
         <a href="https://github.com/jameschealey" target="_blank" rel="noreferrer">GitHub</a>
       </div>
     </div>
@@ -256,18 +269,42 @@
     <section class="hero">
       <div class="hero-grid">
         <div class="panel" style="padding:22px;">
-          <h1 class="h1">Product leader building high-reliability systems.</h1>
+          <h1 class="h1">Product leader building safety-critical, high-reliability systems.</h1>
           <p class="sub">
-            I work at the intersection of robotics, software delivery, and operational excellence —
-            turning ambiguous problems into shippable roadmaps and measurable outcomes.
+            I lead portfolios at the intersection of robotics, embedded platforms, and software delivery —
+            turning ambiguous problems into shippable roadmaps, measurable outcomes, and durable operations.
           </p>
+
+          <div class="kpis" aria-label="Selected highlights">
+            <div class="kpi">
+              <strong>$38.9M</strong>
+              <span>Modeled & led a controller platform cost-reduction initiative</span>
+            </div>
+            <div class="kpi">
+              <strong>$7.1M</strong>
+              <span>Availability uplift via self-healing + fault recovery automation</span>
+            </div>
+            <div class="kpi">
+              <strong>15,000+</strong>
+              <span>Deployed fleet footprint supported by reliability architecture changes</span>
+            </div>
+            <div class="kpi">
+              <strong>265+</strong>
+              <span>Site rollout governance for a major platform upgrade</span>
+            </div>
+          </div>
 
           <div class="cta-row">
             <a class="btn primary" href="#contact">Get in touch <small>→</small></a>
-            <a class="btn" href="#projects">View projects <small>↓</small></a>
+            <a class="btn" href="#projects">View selected work <small>↓</small></a>
             <!-- Optional: link to a PDF resume you add later -->
             <!-- <a class="btn" href="/resume.pdf">Resume <small>PDF</small></a> -->
           </div>
+
+          <p class="sub" style="margin-top:14px; margin-bottom:0; font-size:14px;">
+            <span style="color:rgba(255,255,255,.72);">Note:</span>
+            This site intentionally omits company names and industry-specific terminology for confidentiality.
+          </p>
         </div>
 
         <div class="panel media">
@@ -281,7 +318,7 @@
 
           <span class="media-badge">
             <span class="pill" aria-hidden="true"></span>
-            Minimal. Fast. Purposeful.
+            Minimal. Fast. Outcome-driven.
           </span>
         </div>
       </div>
@@ -291,16 +328,34 @@
       <h2>What I do</h2>
       <div class="cards">
         <div class="card">
-          <h3>Product & delivery</h3>
-          <p>Roadmaps, crisp requirements, stakeholder alignment, and steady execution — without drama.</p>
+          <h3>Product strategy & roadmaps</h3>
+          <p>Own multi-year strategy, funding alignment, and roadmaps for safety-critical platforms spanning hardware, embedded, and software.</p>
         </div>
         <div class="card">
           <h3>Systems thinking</h3>
-          <p>Designing durable solutions across teams, data, and tooling with clear metrics and feedback loops.</p>
+          <p>Design durable solutions across teams, data, and tooling—telemetry, fault recovery, test strategy, and release readiness.</p>
         </div>
         <div class="card">
-          <h3>Operational excellence</h3>
-          <p>Finding leverage in process, reliability, and cost — then turning it into repeatable wins.</p>
+          <h3>Portfolio governance</h3>
+          <p>Turn cross-functional ambiguity into clear priorities, quarterly planning mechanisms, and predictable delivery.</p>
+        </div>
+      </div>
+    </section>
+
+    <section class="section" id="impact">
+      <h2>Impact areas</h2>
+      <div class="cards">
+        <div class="card">
+          <h3>Embedded platform economics</h3>
+          <p>Defined business cases, authored PRDs, and executed operating plans for platform changes that reduce unit cost at scale.</p>
+        </div>
+        <div class="card">
+          <h3>Reliability & self-healing</h3>
+          <p>Improved availability through architecture changes, fault detection, and automated recovery patterns across large deployments.</p>
+        </div>
+        <div class="card">
+          <h3>Global rollout execution</h3>
+          <p>Led readiness, pilots, test plans, integration strategy, and scalability improvements for multi-site launches.</p>
         </div>
       </div>
     </section>
@@ -309,16 +364,33 @@
       <h2>Selected work</h2>
       <div class="cards">
         <a class="card" href="#" onclick="return false;">
-          <h3>Program 1</h3>
-          <p>One-line outcome: what shipped, what improved, and why it mattered.</p>
+          <h3>Embedded controller platform</h3>
+          <p>Built the business case + product strategy for a large cost reduction initiative, including financial modeling, PRD authorship, and executive planning artifacts.</p>
         </a>
+
         <a class="card" href="#" onclick="return false;">
-          <h3>Program 2</h3>
-          <p>One-line outcome: cost, speed, reliability, or customer impact — quantified.</p>
+          <h3>Self-healing availability program</h3>
+          <p>Delivered reliability architecture and automated fault recovery improvements across a large deployed fleet, unlocking multi-million-dollar savings.</p>
         </a>
+
         <a class="card" href="#" onclick="return false;">
-          <h3>Program 3</h3>
-          <p>One-line outcome: cross-functional coordination, ambiguity reduction, and delivery.</p>
+          <h3>Global safety platform rollout</h3>
+          <p>Drove general availability readiness: onsite pilots, test strategy, integration planning, and scalability improvements for broad regional expansion.</p>
+        </a>
+
+        <a class="card" href="#" onclick="return false;">
+          <h3>Portfolio prioritization & governance</h3>
+          <p>Surfaced 60+ cross-functional priorities and implemented governance with engineering leaders to align investment, resourcing, and quarterly delivery.</p>
+        </a>
+
+        <a class="card" href="#" onclick="return false;">
+          <h3>Brownfield engineering change delivery</h3>
+          <p>Owned intake, planning, and rollout governance across hundreds of operational sites—driving lifecycle management and consistent execution.</p>
+        </a>
+
+        <a class="card" href="#" onclick="return false;">
+          <h3>Agile delivery acceleration</h3>
+          <p>Led an org-wide delivery transformation supporting multiple teams and dramatically increasing release cadence while modernizing a mobile codebase.</p>
         </a>
       </div>
     </section>
@@ -329,12 +401,12 @@
         <p style="margin:0; color: var(--muted); line-height:1.6;">
           Email is the fastest way to reach me.
           <br />
-          <strong style="color:var(--text);">yourname@email.com</strong>
+          <strong style="color:var(--text);">jameschealey@gmail.com</strong>
         </p>
 
         <div class="cta-row" style="margin-top:14px;">
-          <a class="btn primary" href="mailto:yourname@email.com">Email me <small>↗</small></a>
-          <a class="btn" href="#" onclick="return false;">LinkedIn <small>↗</small></a>
+          <a class="btn primary" href="mailto:jameschealey@gmail.com">Email me <small>↗</small></a>
+          <a class="btn" href="https://linkedin.com/in/jamescundarihealey" target="_blank" rel="noreferrer">LinkedIn <small>↗</small></a>
         </div>
       </div>
     </section>
