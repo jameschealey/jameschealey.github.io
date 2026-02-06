@@ -3,421 +3,1001 @@
 <head>
   <meta charset="utf-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1" />
-  <title>James Healey</title>
+  <title>James Healey — Product Leader</title>
   <meta name="description" content="Product leader focused on robotics, systems, and execution." />
   <meta name="theme-color" content="#0b0b0f" />
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=DM+Sans:wght@400;500;600;700&family=JetBrains+Mono:wght@400;600&display=swap" rel="stylesheet">
 
   <style>
     :root{
-      --bg: #07070a;
-      --panel: rgba(255,255,255,.06);
-      --panel2: rgba(255,255,255,.09);
-      --text: rgba(255,255,255,.92);
-      --muted: rgba(255,255,255,.62);
-      --line: rgba(255,255,255,.12);
-      --shadow: 0 20px 60px rgba(0,0,0,.45);
-      --r: 18px;
-      --max: 1100px;
+      --bg: #050508;
+      --text: rgba(255,255,255,.95);
+      --muted: rgba(255,255,255,.55);
+      --accent: #00d9ff;
+      --accent2: #8b5cf6;
+      --line: rgba(255,255,255,.08);
+      --panel: rgba(255,255,255,.03);
+      --glow: 0 0 40px rgba(0,217,255,.15);
+      --shadow: 0 20px 60px rgba(0,0,0,.5);
+      --r: 20px;
+      --max: 1200px;
     }
 
-    *{box-sizing:border-box}
-    html,body{height:100%}
+    *{box-sizing:border-box; margin:0; padding:0}
+    html{scroll-behavior: smooth}
     body{
-      margin:0;
-      font-family: ui-sans-serif, system-ui, -apple-system, Segoe UI, Roboto, Helvetica, Arial, "Apple Color Emoji","Segoe UI Emoji";
-      background:
-        radial-gradient(1200px 600px at 15% 10%, rgba(130,90,255,.18), transparent 55%),
-        radial-gradient(900px 500px at 85% 25%, rgba(70,220,255,.12), transparent 55%),
-        radial-gradient(700px 420px at 55% 85%, rgba(255,255,255,.05), transparent 55%),
-        var(--bg);
+      font-family: 'DM Sans', ui-sans-serif, system-ui, -apple-system, sans-serif;
+      background: var(--bg);
       color: var(--text);
-      letter-spacing: .1px;
+      overflow-x: hidden;
+      position: relative;
+    }
+
+    /* Animated background grid */
+    body::before{
+      content: "";
+      position: fixed;
+      inset: 0;
+      background-image: 
+        linear-gradient(rgba(255,255,255,.02) 1px, transparent 1px),
+        linear-gradient(90deg, rgba(255,255,255,.02) 1px, transparent 1px);
+      background-size: 60px 60px;
+      z-index: -2;
+      animation: gridMove 20s linear infinite;
+    }
+
+    @keyframes gridMove {
+      0% { transform: translate(0, 0); }
+      100% { transform: translate(60px, 60px); }
+    }
+
+    /* Gradient orbs */
+    .orb{
+      position: fixed;
+      border-radius: 50%;
+      filter: blur(80px);
+      opacity: .3;
+      z-index: -1;
+      pointer-events: none;
+      animation: float 20s ease-in-out infinite;
+    }
+    .orb1{
+      width: 500px;
+      height: 500px;
+      background: radial-gradient(circle, var(--accent), transparent 70%);
+      top: -100px;
+      left: -100px;
+      animation-delay: 0s;
+    }
+    .orb2{
+      width: 400px;
+      height: 400px;
+      background: radial-gradient(circle, var(--accent2), transparent 70%);
+      bottom: -100px;
+      right: -100px;
+      animation-delay: -10s;
+    }
+    .orb3{
+      width: 350px;
+      height: 350px;
+      background: radial-gradient(circle, #ff006e, transparent 70%);
+      top: 50%;
+      right: 20%;
+      animation-delay: -5s;
+    }
+
+    @keyframes float {
+      0%, 100% { transform: translate(0, 0) scale(1); }
+      33% { transform: translate(50px, -50px) scale(1.1); }
+      66% { transform: translate(-30px, 40px) scale(.9); }
     }
 
     a{color:inherit; text-decoration:none}
-    .wrap{max-width:var(--max); margin:0 auto; padding:24px}
-    .grid{display:grid; gap:18px}
+    .wrap{max-width:var(--max); margin:0 auto; padding:0 28px}
 
-    /* Top nav (glassy) */
+    /* Navigation */
     .nav{
-      position:sticky; top:0; z-index:10;
-      backdrop-filter: blur(14px);
-      -webkit-backdrop-filter: blur(14px);
-      background: linear-gradient(to bottom, rgba(7,7,10,.85), rgba(7,7,10,.45));
+      position: fixed;
+      top: 0;
+      left: 0;
+      right: 0;
+      z-index: 100;
+      backdrop-filter: blur(20px);
+      -webkit-backdrop-filter: blur(20px);
+      background: rgba(5,5,8,.7);
       border-bottom: 1px solid var(--line);
+      transform: translateY(0);
+      transition: transform .3s ease;
+    }
+    .nav.hidden{
+      transform: translateY(-100%);
     }
     .nav-inner{
-      max-width:var(--max); margin:0 auto; padding:14px 24px;
-      display:flex; align-items:center; justify-content:space-between; gap:16px;
+      max-width: var(--max);
+      margin: 0 auto;
+      padding: 20px 28px;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
     }
     .brand{
-      display:flex; align-items:center; gap:10px;
-      font-weight:600;
-      letter-spacing:.3px;
+      display: flex;
+      align-items: center;
+      gap: 12px;
+      font-weight: 700;
+      font-size: 18px;
+      letter-spacing: -.3px;
     }
-    .dot{
-      width:10px; height:10px; border-radius:50%;
-      background: radial-gradient(circle at 35% 35%, #fff, rgba(255,255,255,.25));
-      box-shadow: 0 0 0 6px rgba(255,255,255,.06);
+    .avatar{
+      width: 42px;
+      height: 42px;
+      border-radius: 50%;
+      background: linear-gradient(135deg, var(--accent), var(--accent2));
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-weight: 700;
+      font-size: 18px;
+      box-shadow: var(--glow);
+      position: relative;
+      overflow: hidden;
     }
-    .links{display:flex; gap:14px; align-items:center}
-    .links a{
-      padding:8px 10px;
+    .avatar::after{
+      content: "";
+      position: absolute;
+      inset: 0;
+      background: linear-gradient(45deg, transparent 30%, rgba(255,255,255,.3), transparent 70%);
+      animation: shimmer 3s infinite;
+    }
+    @keyframes shimmer {
+      0% { transform: translateX(-100%) translateY(-100%) rotate(45deg); }
+      100% { transform: translateX(100%) translateY(100%) rotate(45deg); }
+    }
+
+    .nav-links{
+      display: flex;
+      gap: 8px;
+      align-items: center;
+    }
+    .nav-links a{
+      padding: 10px 16px;
       border-radius: 999px;
       color: var(--muted);
-      transition: .2s ease;
-      border: 1px solid transparent;
+      transition: all .2s ease;
+      font-weight: 500;
+      font-size: 15px;
+      position: relative;
     }
-    .links a:hover{
+    .nav-links a::after{
+      content: "";
+      position: absolute;
+      bottom: 8px;
+      left: 16px;
+      right: 16px;
+      height: 2px;
+      background: var(--accent);
+      transform: scaleX(0);
+      transition: transform .2s ease;
+    }
+    .nav-links a:hover{
       color: var(--text);
-      border-color: var(--line);
-      background: rgba(255,255,255,.04);
+    }
+    .nav-links a:hover::after{
+      transform: scaleX(1);
     }
 
     /* Hero */
     .hero{
-      padding:48px 0 18px;
+      min-height: 100vh;
+      display: flex;
+      align-items: center;
+      padding: 120px 0 80px;
+      position: relative;
     }
-    .hero-grid{
-      display:grid;
-      grid-template-columns: 1.1fr .9fr;
-      gap:18px;
-      align-items:stretch;
-    }
-    @media (max-width: 900px){
-      .hero-grid{grid-template-columns: 1fr}
-      .hero{padding-top:28px}
+    
+    .hero-content{
+      position: relative;
+      z-index: 1;
     }
 
-    .h1{
-      font-size: clamp(34px, 4.2vw, 54px);
-      line-height: 1.05;
-      margin:0 0 14px;
-      letter-spacing: -.6px;
+    .eyebrow{
+      display: inline-flex;
+      align-items: center;
+      gap: 10px;
+      padding: 8px 16px;
+      border-radius: 999px;
+      background: rgba(0,217,255,.1);
+      border: 1px solid rgba(0,217,255,.2);
+      color: var(--accent);
+      font-size: 14px;
+      font-weight: 600;
+      margin-bottom: 24px;
+      animation: slideDown .6s ease;
     }
-    .sub{
-      margin:0 0 20px;
-      font-size: clamp(16px, 1.4vw, 18px);
+    .status-dot{
+      width: 8px;
+      height: 8px;
+      border-radius: 50%;
+      background: var(--accent);
+      box-shadow: 0 0 10px var(--accent);
+      animation: pulse 2s ease infinite;
+    }
+    @keyframes pulse {
+      0%, 100% { opacity: 1; transform: scale(1); }
+      50% { opacity: .6; transform: scale(1.2); }
+    }
+
+    h1{
+      font-size: clamp(40px, 6vw, 80px);
+      line-height: 1.1;
+      margin: 0 0 24px;
+      letter-spacing: -1.5px;
+      font-weight: 700;
+      background: linear-gradient(135deg, #fff 0%, rgba(255,255,255,.7) 100%);
+      -webkit-background-clip: text;
+      -webkit-text-fill-color: transparent;
+      background-clip: text;
+      animation: slideUp .8s ease;
+    }
+
+    @keyframes slideUp {
+      from { opacity: 0; transform: translateY(30px); }
+      to { opacity: 1; transform: translateY(0); }
+    }
+    @keyframes slideDown {
+      from { opacity: 0; transform: translateY(-20px); }
+      to { opacity: 1; transform: translateY(0); }
+    }
+
+    .subtitle{
+      font-size: clamp(18px, 2vw, 24px);
       line-height: 1.6;
       color: var(--muted);
-      max-width: 60ch;
+      max-width: 680px;
+      margin-bottom: 32px;
+      animation: slideUp 1s ease;
     }
 
-    .cta-row{display:flex; flex-wrap:wrap; gap:10px; margin-top:18px}
+    .cta-group{
+      display: flex;
+      flex-wrap: wrap;
+      gap: 14px;
+      margin-bottom: 60px;
+      animation: slideUp 1.2s ease;
+    }
+
     .btn{
-      display:inline-flex; align-items:center; gap:10px;
-      padding:11px 14px;
+      display: inline-flex;
+      align-items: center;
+      gap: 10px;
+      padding: 16px 32px;
       border-radius: 999px;
+      font-weight: 600;
+      font-size: 16px;
+      transition: all .3s ease;
+      position: relative;
+      overflow: hidden;
+    }
+    .btn::before{
+      content: "";
+      position: absolute;
+      inset: 0;
+      background: linear-gradient(45deg, transparent, rgba(255,255,255,.1), transparent);
+      transform: translateX(-100%);
+      transition: transform .6s ease;
+    }
+    .btn:hover::before{
+      transform: translateX(100%);
+    }
+
+    .btn-primary{
+      background: linear-gradient(135deg, var(--accent), var(--accent2));
+      color: #000;
+      box-shadow: 0 10px 40px rgba(0,217,255,.3);
+    }
+    .btn-primary:hover{
+      transform: translateY(-2px);
+      box-shadow: 0 15px 50px rgba(0,217,255,.4);
+    }
+
+    .btn-secondary{
+      background: rgba(255,255,255,.05);
       border: 1px solid var(--line);
-      background: rgba(255,255,255,.04);
       color: var(--text);
-      transition:.2s ease;
-      user-select:none;
     }
-    .btn:hover{transform: translateY(-1px); border-color: rgba(255,255,255,.22); background: rgba(255,255,255,.06)}
-    .btn.primary{
-      border-color: transparent;
-      background: linear-gradient(135deg, rgba(255,255,255,.18), rgba(255,255,255,.08));
-      box-shadow: 0 10px 30px rgba(0,0,0,.25);
+    .btn-secondary:hover{
+      background: rgba(255,255,255,.08);
+      border-color: rgba(255,255,255,.2);
     }
-    .btn small{color:var(--muted); font-weight:500}
 
-    .panel{
+    /* Stats Grid */
+    .stats{
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(240px, 1fr));
+      gap: 20px;
+      margin-bottom: 80px;
+      animation: slideUp 1.4s ease;
+    }
+    .stat-card{
+      padding: 24px;
       border-radius: var(--r);
+      background: var(--panel);
       border: 1px solid var(--line);
-      background: linear-gradient(180deg, rgba(255,255,255,.06), rgba(255,255,255,.03));
-      box-shadow: var(--shadow);
-      overflow:hidden;
+      position: relative;
+      overflow: hidden;
+      transition: all .3s ease;
     }
-
-    /* Hero media panel (video-ready) */
-    .media{
-      position:relative;
-      min-height: 340px;
-      display:flex;
-      align-items:flex-end;
-      padding:18px;
-      isolation:isolate;
+    .stat-card::before{
+      content: "";
+      position: absolute;
+      top: 0;
+      left: 0;
+      right: 0;
+      height: 2px;
+      background: linear-gradient(90deg, var(--accent), var(--accent2));
+      transform: scaleX(0);
+      transform-origin: left;
+      transition: transform .3s ease;
     }
-    .media::before{
-      content:"";
-      position:absolute; inset:0;
-      background:
-        radial-gradient(600px 260px at 30% 25%, rgba(255,255,255,.10), transparent 55%),
-        radial-gradient(500px 240px at 80% 35%, rgba(70,220,255,.10), transparent 60%),
-        radial-gradient(650px 360px at 55% 90%, rgba(130,90,255,.12), transparent 60%),
-        linear-gradient(180deg, rgba(255,255,255,.02), rgba(0,0,0,.25));
-      z-index:-1;
+    .stat-card:hover{
+      transform: translateY(-4px);
+      border-color: rgba(255,255,255,.15);
+      background: rgba(255,255,255,.05);
     }
-    .media video{
-      position:absolute; inset:0;
-      width:100%; height:100%;
-      object-fit:cover;
-      opacity:.55;
-      filter:saturate(1.05) contrast(1.05);
-      z-index:-2;
-      display:none; /* turn on after you add a video */
+    .stat-card:hover::before{
+      transform: scaleX(1);
     }
-    .media-badge{
-      display:inline-flex; align-items:center; gap:8px;
-      padding:8px 10px;
-      border-radius: 999px;
-      border: 1px solid var(--line);
-      background: rgba(0,0,0,.25);
+    .stat-number{
+      font-size: 36px;
+      font-weight: 700;
+      font-family: 'JetBrains Mono', monospace;
+      background: linear-gradient(135deg, var(--accent), #fff);
+      -webkit-background-clip: text;
+      -webkit-text-fill-color: transparent;
+      background-clip: text;
+      margin-bottom: 8px;
+    }
+    .stat-label{
       color: var(--muted);
-      font-size: 13px;
-    }
-    .pill{
-      width:8px; height:8px; border-radius:50%;
-      background: rgba(255,255,255,.65);
-      box-shadow: 0 0 0 4px rgba(255,255,255,.08);
+      font-size: 14px;
+      line-height: 1.5;
     }
 
-    /* Sections */
-    .section{
-      padding:18px 0;
+    /* Section Headers */
+    section{
+      padding: 80px 0;
+      position: relative;
     }
-    .section h2{
-      margin:0 0 10px;
+    .section-header{
+      text-align: center;
+      margin-bottom: 60px;
+      opacity: 0;
+      transform: translateY(30px);
+      transition: all .6s ease;
+    }
+    .section-header.visible{
+      opacity: 1;
+      transform: translateY(0);
+    }
+    .section-label{
+      display: inline-block;
       font-size: 14px;
-      letter-spacing: .16em;
+      font-weight: 600;
+      letter-spacing: .15em;
       text-transform: uppercase;
-      color: rgba(255,255,255,.72);
+      color: var(--accent);
+      margin-bottom: 16px;
+      font-family: 'JetBrains Mono', monospace;
     }
-    .cards{
-      display:grid;
-      grid-template-columns: repeat(3, 1fr);
-      gap:14px;
+    h2{
+      font-size: clamp(32px, 4vw, 48px);
+      font-weight: 700;
+      margin-bottom: 16px;
+      letter-spacing: -1px;
     }
-    @media (max-width: 900px){
-      .cards{grid-template-columns: 1fr}
+    .section-desc{
+      font-size: 18px;
+      color: var(--muted);
+      max-width: 600px;
+      margin: 0 auto;
+      line-height: 1.6;
+    }
+
+    /* Cards Grid */
+    .cards-grid{
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(320px, 1fr));
+      gap: 24px;
     }
     .card{
-      padding:16px;
+      padding: 32px;
       border-radius: var(--r);
+      background: var(--panel);
       border: 1px solid var(--line);
-      background: rgba(255,255,255,.04);
-      transition: .2s ease;
-      min-height: 124px;
+      position: relative;
+      transition: all .4s ease;
+      opacity: 0;
+      transform: translateY(40px);
+    }
+    .card.visible{
+      opacity: 1;
+      transform: translateY(0);
+    }
+    .card::after{
+      content: "";
+      position: absolute;
+      inset: 0;
+      border-radius: var(--r);
+      background: linear-gradient(135deg, rgba(0,217,255,.05), rgba(139,92,246,.05));
+      opacity: 0;
+      transition: opacity .4s ease;
     }
     .card:hover{
-      transform: translateY(-2px);
-      border-color: rgba(255,255,255,.22);
-      background: rgba(255,255,255,.055);
+      transform: translateY(-8px);
+      border-color: rgba(255,255,255,.2);
+      box-shadow: var(--shadow);
     }
+    .card:hover::after{
+      opacity: 1;
+    }
+
+    .card-icon{
+      width: 56px;
+      height: 56px;
+      border-radius: 12px;
+      background: linear-gradient(135deg, rgba(0,217,255,.1), rgba(139,92,246,.1));
+      border: 1px solid rgba(0,217,255,.2);
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-size: 24px;
+      margin-bottom: 20px;
+    }
+
     .card h3{
-      margin:0 0 8px;
-      font-size: 16px;
-      letter-spacing: -.2px;
+      font-size: 22px;
+      margin-bottom: 12px;
+      letter-spacing: -.3px;
     }
     .card p{
-      margin:0;
       color: var(--muted);
-      line-height:1.55;
-      font-size: 14.5px;
+      line-height: 1.7;
+      font-size: 15px;
     }
-    .kpis{
-      display:flex; flex-wrap:wrap; gap:10px;
-      margin-top: 14px;
+
+    /* Projects Grid */
+    .projects-grid{
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(340px, 1fr));
+      gap: 28px;
     }
-    .kpi{
-      padding:10px 12px;
-      border-radius: 14px;
+    .project-card{
+      border-radius: var(--r);
+      background: var(--panel);
       border: 1px solid var(--line);
-      background: rgba(255,255,255,.03);
-      min-width: 170px;
+      overflow: hidden;
+      transition: all .4s ease;
+      cursor: pointer;
+      opacity: 0;
+      transform: translateY(40px);
     }
-    .kpi strong{display:block; font-size: 16px; letter-spacing: -.2px}
-    .kpi span{display:block; color: var(--muted); margin-top:4px; font-size: 13px}
+    .project-card.visible{
+      opacity: 1;
+      transform: translateY(0);
+    }
+    .project-card:hover{
+      transform: translateY(-8px);
+      border-color: rgba(255,255,255,.2);
+      box-shadow: var(--shadow);
+    }
+
+    .project-visual{
+      height: 180px;
+      background: linear-gradient(135deg, rgba(0,217,255,.2), rgba(139,92,246,.2));
+      position: relative;
+      overflow: hidden;
+    }
+    .project-visual::before{
+      content: "";
+      position: absolute;
+      inset: 0;
+      background-image: 
+        linear-gradient(rgba(255,255,255,.03) 2px, transparent 2px),
+        linear-gradient(90deg, rgba(255,255,255,.03) 2px, transparent 2px);
+      background-size: 30px 30px;
+      animation: gridSlide 15s linear infinite;
+    }
+    @keyframes gridSlide {
+      0% { transform: translate(0, 0); }
+      100% { transform: translate(30px, 30px); }
+    }
+
+    .project-tag{
+      position: absolute;
+      top: 16px;
+      right: 16px;
+      padding: 6px 12px;
+      border-radius: 999px;
+      background: rgba(0,0,0,.6);
+      backdrop-filter: blur(10px);
+      font-size: 12px;
+      font-weight: 600;
+      color: var(--accent);
+      border: 1px solid rgba(0,217,255,.3);
+    }
+
+    .project-content{
+      padding: 28px;
+    }
+    .project-content h3{
+      font-size: 20px;
+      margin-bottom: 12px;
+      letter-spacing: -.3px;
+    }
+    .project-content p{
+      color: var(--muted);
+      line-height: 1.6;
+      font-size: 15px;
+      margin-bottom: 16px;
+    }
+
+    .project-meta{
+      display: flex;
+      gap: 16px;
+      font-size: 13px;
+      color: var(--muted);
+    }
+    .project-meta span{
+      display: flex;
+      align-items: center;
+      gap: 6px;
+    }
+
+    /* Contact Section */
+    #contact{
+      background: linear-gradient(135deg, rgba(0,217,255,.03), rgba(139,92,246,.03));
+      border-radius: var(--r);
+      padding: 80px 40px;
+      margin: 40px 0;
+      border: 1px solid var(--line);
+      text-align: center;
+    }
+
+    .contact-methods{
+      display: flex;
+      flex-wrap: wrap;
+      justify-content: center;
+      gap: 16px;
+      margin-top: 32px;
+    }
+
+    .contact-btn{
+      display: flex;
+      align-items: center;
+      gap: 12px;
+      padding: 18px 32px;
+      border-radius: 999px;
+      background: rgba(255,255,255,.05);
+      border: 1px solid var(--line);
+      font-size: 16px;
+      font-weight: 600;
+      transition: all .3s ease;
+    }
+    .contact-btn:hover{
+      background: rgba(255,255,255,.08);
+      border-color: rgba(255,255,255,.2);
+      transform: translateY(-2px);
+    }
 
     /* Footer */
     footer{
-      padding:22px 0 40px;
+      padding: 40px 0;
+      text-align: center;
       color: var(--muted);
-      font-size: 13px;
+      font-size: 14px;
       border-top: 1px solid var(--line);
-      margin-top: 22px;
     }
 
-    /* Motion accessibility */
+    /* Scroll Progress Bar */
+    .progress-bar{
+      position: fixed;
+      top: 0;
+      left: 0;
+      height: 3px;
+      background: linear-gradient(90deg, var(--accent), var(--accent2));
+      z-index: 101;
+      transform-origin: left;
+      transition: transform .1s ease;
+    }
+
+    /* Mobile Responsive */
+    @media (max-width: 768px){
+      .nav-links{
+        display: none;
+      }
+      .hero{
+        padding: 100px 0 60px;
+      }
+      .stats{
+        grid-template-columns: 1fr;
+      }
+      .cards-grid, .projects-grid{
+        grid-template-columns: 1fr;
+      }
+      h1{
+        font-size: 36px;
+      }
+      .cta-group{
+        flex-direction: column;
+      }
+      .btn{
+        justify-content: center;
+      }
+    }
+
+    /* Accessibility */
     @media (prefers-reduced-motion: reduce){
-      .btn:hover, .card:hover{transform:none}
-      *{scroll-behavior:auto !important}
+      *, *::before, *::after{
+        animation-duration: .01ms !important;
+        animation-iteration-count: 1 !important;
+        transition-duration: .01ms !important;
+      }
     }
   </style>
 </head>
 
 <body>
-  <div class="nav">
+  <div class="orb orb1"></div>
+  <div class="orb orb2"></div>
+  <div class="orb orb3"></div>
+
+  <div class="progress-bar" id="progressBar"></div>
+
+  <nav class="nav" id="nav">
     <div class="nav-inner">
       <div class="brand">
-        <span class="dot" aria-hidden="true"></span>
+        <div class="avatar">JH</div>
         <span>James Healey</span>
       </div>
-
-      <div class="links" aria-label="Site">
+      <div class="nav-links">
         <a href="#work">Work</a>
         <a href="#impact">Impact</a>
         <a href="#projects">Projects</a>
         <a href="#contact">Contact</a>
-        <a href="https://github.com/jameschealey" target="_blank" rel="noreferrer">GitHub</a>
+        <a href="https://github.com/jameschealey" target="_blank" rel="noreferrer">GitHub ↗</a>
       </div>
     </div>
-  </div>
+  </nav>
 
-  <main class="wrap">
+  <main>
     <section class="hero">
-      <div class="hero-grid">
-        <div class="panel" style="padding:22px;">
-          <h1 class="h1">Product leader building safety-critical, high-reliability systems.</h1>
-          <p class="sub">
-            I lead portfolios at the intersection of robotics, embedded platforms, and software delivery —
-            turning ambiguous problems into shippable roadmaps, measurable outcomes, and durable operations.
+      <div class="wrap">
+        <div class="hero-content">
+          <h1>Building systems<br/>that scale & ship.</h1>
+
+          <p class="subtitle">
+            Product leader specializing in safety-critical robotics, embedded platforms, 
+            and software delivery. I transform ambiguous challenges into executable roadmaps, 
+            measurable outcomes, and reliable operations at scale.
           </p>
 
-          <div class="kpis" aria-label="Selected highlights">
-            <div class="kpi">
-              <strong>$38.9M</strong>
-              <span>Modeled & led a controller platform cost-reduction initiative</span>
+          <div class="cta-group">
+            <a class="btn btn-primary" href="#contact">
+              Get in touch
+              <span>→</span>
+            </a>
+            <a class="btn btn-secondary" href="#projects">
+              View my work
+              <span>↓</span>
+            </a>
+          </div>
+
+          <div class="stats">
+            <div class="stat-card" style="animation-delay: .1s">
+              <div class="stat-number">$38.9M</div>
+              <div class="stat-label">Cost reduction via platform optimization</div>
             </div>
-            <div class="kpi">
-              <strong>$7.1M</strong>
-              <span>Availability uplift via self-healing + fault recovery automation</span>
+            <div class="stat-card" style="animation-delay: .2s">
+              <div class="stat-number">$7.1M</div>
+              <div class="stat-label">Value from self-healing automation</div>
             </div>
-            <div class="kpi">
-              <strong>15,000+</strong>
-              <span>Deployed fleet footprint supported by reliability architecture changes</span>
+            <div class="stat-card" style="animation-delay: .3s">
+              <div class="stat-number">15K+</div>
+              <div class="stat-label">Devices in managed fleet</div>
             </div>
-            <div class="kpi">
-              <strong>265+</strong>
-              <span>Site rollout governance for a major platform upgrade</span>
+            <div class="stat-card" style="animation-delay: .4s">
+              <div class="stat-number">265+</div>
+              <div class="stat-label">Sites in global rollout</div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <section id="work">
+      <div class="wrap">
+        <div class="section-header">
+          <div class="section-label">— WHAT I DO</div>
+          <h2>Core Capabilities</h2>
+          <p class="section-desc">
+            Strategic product leadership across hardware, software, and operations
+          </p>
+        </div>
+
+        <div class="cards-grid">
+          <div class="card" style="transition-delay: .1s">
+            <div class="card-icon">🎯</div>
+            <h3>Product Strategy & Roadmaps</h3>
+            <p>Multi-year strategy development, funding alignment, and roadmap ownership for safety-critical platforms. Drive cross-functional execution from concept to deployment across hardware, embedded systems, and software.</p>
+          </div>
+
+          <div class="card" style="transition-delay: .2s">
+            <div class="card-icon">⚙️</div>
+            <h3>Systems Architecture</h3>
+            <p>Design robust solutions spanning teams, data pipelines, and tooling ecosystems. Build telemetry frameworks, fault recovery systems, test strategies, and release readiness processes that scale.</p>
+          </div>
+
+          <div class="card" style="transition-delay: .3s">
+            <div class="card-icon">📊</div>
+            <h3>Portfolio Governance</h3>
+            <p>Transform organizational ambiguity into clear priorities, structured quarterly planning, and predictable delivery. Align stakeholders, manage dependencies, and drive accountability at scale.</p>
+          </div>
+
+          <div class="card" style="transition-delay: .4s">
+            <div class="card-icon">🤖</div>
+            <h3>Robotics & Embedded</h3>
+            <p>Deep expertise in robotics platforms, embedded controllers, and IoT device management. Navigate hardware constraints, supply chain challenges, and field deployment complexities.</p>
+          </div>
+
+          <div class="card" style="transition-delay: .5s">
+            <div class="card-icon">🔧</div>
+            <h3>Reliability Engineering</h3>
+            <p>Build self-healing systems with automated fault detection and recovery. Improve availability through architectural improvements, monitoring infrastructure, and proactive incident management.</p>
+          </div>
+
+          <div class="card" style="transition-delay: .6s">
+            <div class="card-icon">🚀</div>
+            <h3>Scale & Operations</h3>
+            <p>Lead global rollouts, pilot programs, and brownfield migrations. Design change management frameworks and site readiness processes for large-scale deployments.</p>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <section id="impact">
+      <div class="wrap">
+        <div class="section-header">
+          <div class="section-label">— IMPACT</div>
+          <h2>Delivered Results</h2>
+          <p class="section-desc">
+            Real business outcomes through strategic execution
+          </p>
+        </div>
+
+        <div class="cards-grid">
+          <div class="card">
+            <div class="card-icon">💰</div>
+            <h3>Platform Economics</h3>
+            <p>Authored business cases and PRDs for embedded controller platform changes. Led financial modeling, executive alignment, and operating plan execution delivering $38.9M in projected cost reduction.</p>
+          </div>
+
+          <div class="card">
+            <div class="card-icon">🛡️</div>
+            <h3>Self-Healing Systems</h3>
+            <p>Architected and delivered automated fault recovery improvements across 15,000+ deployed devices. Increased availability by 3.2% through intelligent detection and self-repair mechanisms, unlocking $7.1M in value.</p>
+          </div>
+
+          <div class="card">
+            <div class="card-icon">🌍</div>
+            <h3>Global Rollout Execution</h3>
+            <p>Drove general availability readiness for safety-critical platform upgrade across 265+ sites. Managed pilot programs, integration testing, scalability improvements, and regional expansion planning.</p>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <section id="projects">
+      <div class="wrap">
+        <div class="section-header">
+          <div class="section-label">— PORTFOLIO</div>
+          <h2>Selected Work</h2>
+          <p class="section-desc">
+            Representative projects demonstrating strategic impact and execution excellence
+          </p>
+        </div>
+
+        <div class="projects-grid">
+          <a href="case-study-embedded-platform.html" class="project-card" style="transition-delay: .1s">
+            <div class="project-visual" style="background: linear-gradient(135deg, rgba(0,217,255,.25), rgba(139,92,246,.15))">
+              <div class="project-tag">Platform</div>
+            </div>
+            <div class="project-content">
+              <h3>Embedded Controller Platform</h3>
+              <p>Built comprehensive business case and product strategy for large-scale cost reduction initiative. Delivered financial models, PRD documentation, and executive planning artifacts.</p>
+              <div class="project-meta">
+                <span>💰 $38.9M impact</span>
+                <span>📊 Financial modeling</span>
+              </div>
+            </div>
+          </a>
+
+          <a href="case-study-self-healing.html" class="project-card" style="transition-delay: .2s">
+            <div class="project-visual" style="background: linear-gradient(135deg, rgba(255,0,110,.2), rgba(139,92,246,.15))">
+              <div class="project-tag">Reliability</div>
+            </div>
+            <div class="project-content">
+              <h3>Self-Healing Availability Program</h3>
+              <p>Architected and shipped automated fault recovery system across large deployed fleet. Delivered multi-million dollar savings through intelligent monitoring and self-repair.</p>
+              <div class="project-meta">
+                <span>⚡ 15K+ devices</span>
+                <span>📈 3.2% uplift</span>
+              </div>
+            </div>
+          </a>
+
+          <a href="case-study-global-rollout.html" class="project-card" style="transition-delay: .3s">
+            <div class="project-visual" style="background: linear-gradient(135deg, rgba(0,255,163,.2), rgba(0,217,255,.15))">
+              <div class="project-tag">Deployment</div>
+            </div>
+            <div class="project-content">
+              <h3>Global Safety Platform Rollout</h3>
+              <p>Led general availability readiness including pilot programs, test strategy, integration planning, and scalability improvements for multi-region deployment.</p>
+              <div class="project-meta">
+                <span>🌍 265+ sites</span>
+                <span>✓ Safety-critical</span>
+              </div>
+            </div>
+          </a>
+
+          <div class="project-card" style="transition-delay: .4s">
+            <div class="project-visual" style="background: linear-gradient(135deg, rgba(255,184,0,.2), rgba(255,0,110,.15))">
+              <div class="project-tag">Governance</div>
+            </div>
+            <div class="project-content">
+              <h3>Portfolio Prioritization Framework</h3>
+              <p>Surfaced 60+ cross-functional priorities and implemented governance structure with engineering leadership to align investment, resourcing, and quarterly execution.</p>
+              <div class="project-meta">
+                <span>🎯 60+ initiatives</span>
+                <span>📅 Quarterly cadence</span>
+              </div>
             </div>
           </div>
 
-          <div class="cta-row">
-            <a class="btn primary" href="#contact">Get in touch <small>→</small></a>
-            <a class="btn" href="#projects">View selected work <small>↓</small></a>
-            <!-- Optional: link to a PDF resume you add later -->
-            <!-- <a class="btn" href="/resume.pdf">Resume <small>PDF</small></a> -->
+          <div class="project-card" style="transition-delay: .5s">
+            <div class="project-visual" style="background: linear-gradient(135deg, rgba(139,92,246,.25), rgba(0,217,255,.15))">
+              <div class="project-tag">Operations</div>
+            </div>
+            <div class="project-content">
+              <h3>Brownfield Engineering Change</h3>
+              <p>Owned intake, planning, and rollout governance for operational changes across hundreds of sites. Built lifecycle management and execution frameworks.</p>
+              <div class="project-meta">
+                <span>🏗️ 100s of sites</span>
+                <span>⚙️ Lifecycle mgmt</span>
+              </div>
+            </div>
           </div>
 
-          <p class="sub" style="margin-top:14px; margin-bottom:0; font-size:14px;">
-            <span style="color:rgba(255,255,255,.72);">Note:</span>
-            This site intentionally omits company names and industry-specific terminology for confidentiality.
+          <div class="project-card" style="transition-delay: .6s">
+            <div class="project-visual" style="background: linear-gradient(135deg, rgba(0,255,163,.25), rgba(255,184,0,.15))">
+              <div class="project-tag">Transformation</div>
+            </div>
+            <div class="project-content">
+              <h3>Agile Delivery Acceleration</h3>
+              <p>Led organization-wide delivery transformation supporting multiple teams. Dramatically increased release cadence while modernizing legacy mobile codebase.</p>
+              <div class="project-meta">
+                <span>🚀 5x velocity</span>
+                <span>📱 Mobile platform</span>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <section>
+      <div class="wrap">
+        <div id="contact">
+          <div class="section-header" style="margin-bottom: 32px">
+            <div class="section-label">— CONTACT</div>
+            <h2>Get In Touch</h2>
+            <p class="section-desc">
+              Always interested in discussing product challenges, systems thinking, and technical leadership
+            </p>
+          </div>
+
+          <div class="contact-methods">
+            <a class="contact-btn" href="mailto:jameschealey@gmail.com">
+              <span>📧</span>
+              <span>jameschealey@gmail.com</span>
+            </a>
+            <a class="contact-btn" href="https://linkedin.com/in/jamescundarihealey" target="_blank" rel="noreferrer">
+              <span>💼</span>
+              <span>LinkedIn</span>
+              <span>→</span>
+            </a>
+            <a class="contact-btn" href="https://github.com/jameschealey" target="_blank" rel="noreferrer">
+              <span>💻</span>
+              <span>GitHub</span>
+              <span>→</span>
+            </a>
+          </div>
+
+          <p style="margin-top: 40px; font-size: 14px; color: var(--muted);">
+            <strong>Note:</strong> Company names and industry-specific details omitted for confidentiality
           </p>
         </div>
-
-        <div class="panel media">
-          <!-- OPTIONAL HERO VIDEO:
-               1) add a file "hero.mp4" to the repo root
-               2) remove display:none below (in CSS) or set it to block
-          -->
-          <video autoplay muted loop playsinline>
-            <source src="hero.mp4" type="video/mp4" />
-          </video>
-
-          <span class="media-badge">
-            <span class="pill" aria-hidden="true"></span>
-            Minimal. Fast. Outcome-driven.
-          </span>
-        </div>
       </div>
     </section>
-
-    <section class="section" id="work">
-      <h2>What I do</h2>
-      <div class="cards">
-        <div class="card">
-          <h3>Product strategy & roadmaps</h3>
-          <p>Own multi-year strategy, funding alignment, and roadmaps for safety-critical platforms spanning hardware, embedded, and software.</p>
-        </div>
-        <div class="card">
-          <h3>Systems thinking</h3>
-          <p>Design durable solutions across teams, data, and tooling—telemetry, fault recovery, test strategy, and release readiness.</p>
-        </div>
-        <div class="card">
-          <h3>Portfolio governance</h3>
-          <p>Turn cross-functional ambiguity into clear priorities, quarterly planning mechanisms, and predictable delivery.</p>
-        </div>
-      </div>
-    </section>
-
-    <section class="section" id="impact">
-      <h2>Impact areas</h2>
-      <div class="cards">
-        <div class="card">
-          <h3>Embedded platform economics</h3>
-          <p>Defined business cases, authored PRDs, and executed operating plans for platform changes that reduce unit cost at scale.</p>
-        </div>
-        <div class="card">
-          <h3>Reliability & self-healing</h3>
-          <p>Improved availability through architecture changes, fault detection, and automated recovery patterns across large deployments.</p>
-        </div>
-        <div class="card">
-          <h3>Global rollout execution</h3>
-          <p>Led readiness, pilots, test plans, integration strategy, and scalability improvements for multi-site launches.</p>
-        </div>
-      </div>
-    </section>
-
-    <section class="section" id="projects">
-      <h2>Selected work</h2>
-      <div class="cards">
-        <a class="card" href="#" onclick="return false;">
-          <h3>Embedded controller platform</h3>
-          <p>Built the business case + product strategy for a large cost reduction initiative, including financial modeling, PRD authorship, and executive planning artifacts.</p>
-        </a>
-
-        <a class="card" href="#" onclick="return false;">
-          <h3>Self-healing availability program</h3>
-          <p>Delivered reliability architecture and automated fault recovery improvements across a large deployed fleet, unlocking multi-million-dollar savings.</p>
-        </a>
-
-        <a class="card" href="#" onclick="return false;">
-          <h3>Global safety platform rollout</h3>
-          <p>Drove general availability readiness: onsite pilots, test strategy, integration planning, and scalability improvements for broad regional expansion.</p>
-        </a>
-
-        <a class="card" href="#" onclick="return false;">
-          <h3>Portfolio prioritization & governance</h3>
-          <p>Surfaced 60+ cross-functional priorities and implemented governance with engineering leaders to align investment, resourcing, and quarterly delivery.</p>
-        </a>
-
-        <a class="card" href="#" onclick="return false;">
-          <h3>Brownfield engineering change delivery</h3>
-          <p>Owned intake, planning, and rollout governance across hundreds of operational sites—driving lifecycle management and consistent execution.</p>
-        </a>
-
-        <a class="card" href="#" onclick="return false;">
-          <h3>Agile delivery acceleration</h3>
-          <p>Led an org-wide delivery transformation supporting multiple teams and dramatically increasing release cadence while modernizing a mobile codebase.</p>
-        </a>
-      </div>
-    </section>
-
-    <section class="section" id="contact">
-      <h2>Contact</h2>
-      <div class="panel" style="padding:18px;">
-        <p style="margin:0; color: var(--muted); line-height:1.6;">
-          Email is the fastest way to reach me.
-          <br />
-          <strong style="color:var(--text);">jameschealey@gmail.com</strong>
-        </p>
-
-        <div class="cta-row" style="margin-top:14px;">
-          <a class="btn primary" href="mailto:jameschealey@gmail.com">Email me <small>↗</small></a>
-          <a class="btn" href="https://linkedin.com/in/jamescundarihealey" target="_blank" rel="noreferrer">LinkedIn <small>↗</small></a>
-        </div>
-      </div>
-    </section>
-
-    <footer>
-      © <span id="y"></span> James Healey · Built on GitHub Pages
-    </footer>
   </main>
 
+  <footer>
+    <div class="wrap">
+      <p>© <span id="year"></span> James Healey · Built with intention · Powered by curiosity</p>
+    </div>
+  </footer>
+
   <script>
-    document.getElementById("y").textContent = new Date().getFullYear();
+    // Year
+    document.getElementById('year').textContent = new Date().getFullYear();
+
+    // Scroll progress
+    const progressBar = document.getElementById('progressBar');
+    window.addEventListener('scroll', () => {
+      const winScroll = document.documentElement.scrollTop;
+      const height = document.documentElement.scrollHeight - document.documentElement.clientHeight;
+      const scrolled = (winScroll / height) * 100;
+      progressBar.style.transform = `scaleX(${scrolled / 100})`;
+    });
+
+    // Hide/show nav on scroll
+    let lastScroll = 0;
+    const nav = document.getElementById('nav');
+    window.addEventListener('scroll', () => {
+      const currentScroll = window.pageYOffset;
+      if (currentScroll > 100) {
+        if (currentScroll > lastScroll) {
+          nav.classList.add('hidden');
+        } else {
+          nav.classList.remove('hidden');
+        }
+      }
+      lastScroll = currentScroll;
+    });
+
+    // Intersection observer for fade-in animations
+    const observer = new IntersectionObserver((entries) => {
+      entries.forEach((entry, index) => {
+        if (entry.isIntersecting) {
+          setTimeout(() => {
+            entry.target.classList.add('visible');
+          }, index * 100);
+        }
+      });
+    }, {
+      threshold: 0.1,
+      rootMargin: '0px 0px -50px 0px'
+    });
+
+    // Observe all animatable elements
+    document.querySelectorAll('.section-header, .card, .project-card').forEach(el => {
+      observer.observe(el);
+    });
+
+    // Smooth scroll for anchor links
+    document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+      anchor.addEventListener('click', function (e) {
+        e.preventDefault();
+        const target = document.querySelector(this.getAttribute('href'));
+        if (target) {
+          target.scrollIntoView({
+            behavior: 'smooth',
+            block: 'start'
+          });
+        }
+      });
+    });
   </script>
 </body>
 </html>
