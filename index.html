@@ -369,9 +369,13 @@
     .section-header{
       text-align: center;
       margin-bottom: 60px;
+      opacity: 1;
+      transform: translateY(0);
+      transition: all .6s ease;
+    }
+    .section-header.animate{
       opacity: 0;
       transform: translateY(30px);
-      transition: all .6s ease;
     }
     .section-header.visible{
       opacity: 1;
@@ -414,6 +418,10 @@
       border: 1px solid var(--line);
       position: relative;
       transition: all .4s ease;
+      opacity: 1;
+      transform: translateY(0);
+    }
+    .card.animate{
       opacity: 0;
       transform: translateY(40px);
     }
@@ -476,6 +484,10 @@
       overflow: hidden;
       transition: all .4s ease;
       cursor: pointer;
+      opacity: 1;
+      transform: translateY(0);
+    }
+    .project-card.animate{
       opacity: 0;
       transform: translateY(40px);
     }
