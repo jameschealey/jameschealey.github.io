@@ -5,22 +5,22 @@
   <meta name="viewport" content="width=device-width, initial-scale=1" />
   <title>James Healey — Product Leader</title>
   <meta name="description" content="Product leader focused on robotics, systems, and execution." />
-  <meta name="theme-color" content="#0b0b0f" />
+  <meta name="theme-color" content="#ffffff" />
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
   <link href="https://fonts.googleapis.com/css2?family=DM+Sans:wght@400;500;600;700&family=JetBrains+Mono:wght@400;600&display=swap" rel="stylesheet">
 
   <style>
     :root{
-      --bg: #050508;
-      --text: rgba(255,255,255,.95);
-      --muted: rgba(255,255,255,.55);
-      --accent: #00d9ff;
-      --accent2: #8b5cf6;
-      --line: rgba(255,255,255,.08);
-      --panel: rgba(255,255,255,.03);
-      --glow: 0 0 40px rgba(0,217,255,.15);
-      --shadow: 0 20px 60px rgba(0,0,0,.5);
+      --bg: #ffffff;
+      --text: rgba(0,0,0,.9);
+      --muted: rgba(0,0,0,.55);
+      --accent: #0891b2;
+      --accent2: #7c3aed;
+      --line: rgba(0,0,0,.08);
+      --panel: rgba(0,0,0,.03);
+      --glow: 0 0 40px rgba(8,145,178,.15);
+      --shadow: 0 20px 60px rgba(0,0,0,.1);
       --r: 20px;
       --max: 1200px;
     }
@@ -42,9 +42,9 @@
       content: "";
       position: fixed;
       inset: 0;
-      background-image: 
-        linear-gradient(rgba(255,255,255,.02) 1px, transparent 1px),
-        linear-gradient(90deg, rgba(255,255,255,.02) 1px, transparent 1px);
+      background-image:
+        linear-gradient(rgba(0,0,0,.04) 1px, transparent 1px),
+        linear-gradient(90deg, rgba(0,0,0,.04) 1px, transparent 1px);
       background-size: 60px 60px;
       z-index: -2;
       animation: gridMove 20s linear infinite;
@@ -60,7 +60,7 @@
       position: fixed;
       border-radius: 50%;
       filter: blur(80px);
-      opacity: .3;
+      opacity: .15;
       z-index: -1;
       pointer-events: none;
       animation: float 20s ease-in-out infinite;
@@ -108,7 +108,7 @@
       z-index: 100;
       backdrop-filter: blur(12px);
       -webkit-backdrop-filter: blur(12px);
-      background: rgba(5,5,8,.8);
+      background: rgba(255,255,255,.8);
       border-bottom: 1px solid var(--line);
       transition: transform .3s ease;
     }
@@ -138,6 +138,7 @@
       justify-content: center;
       font-weight: 700;
       font-size: 18px;
+      color: #fff;
       box-shadow: var(--glow);
       position: relative;
       overflow: hidden;
@@ -206,8 +207,8 @@
       gap: 10px;
       padding: 8px 16px;
       border-radius: 999px;
-      background: rgba(0,217,255,.1);
-      border: 1px solid rgba(0,217,255,.2);
+      background: rgba(8,145,178,.1);
+      border: 1px solid rgba(8,145,178,.2);
       color: var(--accent);
       font-size: 14px;
       font-weight: 600;
@@ -233,7 +234,7 @@
       margin: 0 0 24px;
       letter-spacing: -1.5px;
       font-weight: 700;
-      background: linear-gradient(135deg, #fff 0%, rgba(255,255,255,.7) 100%);
+      background: linear-gradient(135deg, #1a1a2e 0%, rgba(0,0,0,.7) 100%);
       -webkit-background-clip: text;
       -webkit-text-fill-color: transparent;
       background-clip: text;
@@ -283,7 +284,7 @@
       content: "";
       position: absolute;
       inset: 0;
-      background: linear-gradient(45deg, transparent, rgba(255,255,255,.1), transparent);
+      background: linear-gradient(45deg, transparent, rgba(255,255,255,.2), transparent);
       transform: translateX(-100%);
       transition: transform .6s ease;
     }
@@ -293,22 +294,22 @@
 
     .btn-primary{
       background: linear-gradient(135deg, var(--accent), var(--accent2));
-      color: #000;
-      box-shadow: 0 10px 40px rgba(0,217,255,.3);
+      color: #fff;
+      box-shadow: 0 10px 40px rgba(8,145,178,.2);
     }
     .btn-primary:hover{
       transform: translateY(-2px) translateZ(0);
-      box-shadow: 0 15px 50px rgba(0,217,255,.4);
+      box-shadow: 0 15px 50px rgba(8,145,178,.3);
     }
 
     .btn-secondary{
-      background: rgba(255,255,255,.05);
+      background: rgba(0,0,0,.03);
       border: 1px solid var(--line);
       color: var(--text);
     }
     .btn-secondary:hover{
-      background: rgba(255,255,255,.08);
-      border-color: rgba(255,255,255,.2);
+      background: rgba(0,0,0,.06);
+      border-color: rgba(0,0,0,.15);
     }
 
     /* Stats Grid */
@@ -343,8 +344,8 @@
     }
     .stat-card:hover{
       transform: translateY(-4px) translateZ(0);
-      border-color: rgba(255,255,255,.15);
-      background: rgba(255,255,255,.05);
+      border-color: rgba(0,0,0,.12);
+      background: rgba(0,0,0,.05);
     }
     .stat-card:hover::before{
       transform: scaleX(1);
@@ -353,7 +354,7 @@
       font-size: 36px;
       font-weight: 700;
       font-family: 'JetBrains Mono', monospace;
-      background: linear-gradient(135deg, var(--accent), #fff);
+      background: linear-gradient(135deg, var(--accent), var(--accent2));
       -webkit-background-clip: text;
       -webkit-text-fill-color: transparent;
       background-clip: text;
@@ -439,14 +440,14 @@
       position: absolute;
       inset: 0;
       border-radius: var(--r);
-      background: linear-gradient(135deg, rgba(0,217,255,.05), rgba(139,92,246,.05));
+      background: linear-gradient(135deg, rgba(8,145,178,.05), rgba(124,58,237,.05));
       opacity: 0;
       transition: opacity .4s ease;
       pointer-events: none;
     }
     .card:hover{
       transform: translateY(-8px) translateZ(0);
-      border-color: rgba(255,255,255,.2);
+      border-color: rgba(0,0,0,.12);
       box-shadow: var(--shadow);
     }
     .card:hover::after{
@@ -457,8 +458,8 @@
       width: 56px;
       height: 56px;
       border-radius: 12px;
-      background: linear-gradient(135deg, rgba(0,217,255,.1), rgba(139,92,246,.1));
-      border: 1px solid rgba(0,217,255,.2);
+      background: linear-gradient(135deg, rgba(8,145,178,.1), rgba(124,58,237,.1));
+      border: 1px solid rgba(8,145,178,.2);
       display: flex;
       align-items: center;
       justify-content: center;
@@ -504,13 +505,13 @@
     }
     .project-card:hover{
       transform: translateY(-8px) translateZ(0);
-      border-color: rgba(255,255,255,.2);
+      border-color: rgba(0,0,0,.12);
       box-shadow: var(--shadow);
     }
 
     .project-visual{
       height: 180px;
-      background: linear-gradient(135deg, rgba(0,217,255,.2), rgba(139,92,246,.2));
+      background: linear-gradient(135deg, rgba(8,145,178,.15), rgba(124,58,237,.1));
       position: relative;
       overflow: hidden;
     }
@@ -518,9 +519,9 @@
       content: "";
       position: absolute;
       inset: 0;
-      background-image: 
-        linear-gradient(rgba(255,255,255,.03) 2px, transparent 2px),
-        linear-gradient(90deg, rgba(255,255,255,.03) 2px, transparent 2px);
+      background-image:
+        linear-gradient(rgba(0,0,0,.04) 2px, transparent 2px),
+        linear-gradient(90deg, rgba(0,0,0,.04) 2px, transparent 2px);
       background-size: 30px 30px;
       animation: gridSlide 15s linear infinite;
     }
@@ -535,12 +536,12 @@
       right: 16px;
       padding: 6px 12px;
       border-radius: 999px;
-      background: rgba(0,0,0,.6);
+      background: rgba(255,255,255,.85);
       backdrop-filter: blur(10px);
       font-size: 12px;
       font-weight: 600;
       color: var(--accent);
-      border: 1px solid rgba(0,217,255,.3);
+      border: 1px solid rgba(8,145,178,.3);
     }
 
     .project-content{
@@ -572,7 +573,7 @@
 
     /* Contact Section */
     #contact{
-      background: linear-gradient(135deg, rgba(0,217,255,.03), rgba(139,92,246,.03));
+      background: linear-gradient(135deg, rgba(8,145,178,.04), rgba(124,58,237,.04));
       border-radius: var(--r);
       padding: 80px 40px;
       margin: 40px 0;
@@ -594,7 +595,7 @@
       gap: 12px;
       padding: 18px 32px;
       border-radius: 999px;
-      background: rgba(255,255,255,.05);
+      background: rgba(0,0,0,.03);
       border: 1px solid var(--line);
       font-size: 16px;
       font-weight: 600;
@@ -602,8 +603,8 @@
       will-change: transform;
     }
     .contact-btn:hover{
-      background: rgba(255,255,255,.08);
-      border-color: rgba(255,255,255,.2);
+      background: rgba(0,0,0,.06);
+      border-color: rgba(0,0,0,.15);
       transform: translateY(-2px) translateZ(0);
     }
 
@@ -826,7 +827,7 @@
 
         <div class="projects-grid">
           <a href="case-study-embedded-platform.html" class="project-card" style="transition-delay: .1s">
-            <div class="project-visual" style="background: linear-gradient(135deg, rgba(0,217,255,.25), rgba(139,92,246,.15))">
+            <div class="project-visual" style="background: linear-gradient(135deg, rgba(8,145,178,.15), rgba(124,58,237,.1))">
               <div class="project-tag">Platform</div>
             </div>
             <div class="project-content">
@@ -840,7 +841,7 @@
           </a>
 
           <a href="case-study-self-healing.html" class="project-card" style="transition-delay: .2s">
-            <div class="project-visual" style="background: linear-gradient(135deg, rgba(255,0,110,.2), rgba(139,92,246,.15))">
+            <div class="project-visual" style="background: linear-gradient(135deg, rgba(219,39,119,.15), rgba(124,58,237,.1))">
               <div class="project-tag">Reliability</div>
             </div>
             <div class="project-content">
@@ -854,7 +855,7 @@
           </a>
 
           <a href="case-study-global-rollout.html" class="project-card" style="transition-delay: .3s">
-            <div class="project-visual" style="background: linear-gradient(135deg, rgba(0,255,163,.2), rgba(0,217,255,.15))">
+            <div class="project-visual" style="background: linear-gradient(135deg, rgba(5,150,105,.15), rgba(8,145,178,.1))">
               <div class="project-tag">Deployment</div>
             </div>
             <div class="project-content">
@@ -868,7 +869,7 @@
           </a>
 
           <div class="project-card" style="transition-delay: .4s">
-            <div class="project-visual" style="background: linear-gradient(135deg, rgba(255,184,0,.2), rgba(255,0,110,.15))">
+            <div class="project-visual" style="background: linear-gradient(135deg, rgba(217,119,6,.15), rgba(219,39,119,.1))">
               <div class="project-tag">Governance</div>
             </div>
             <div class="project-content">
@@ -882,7 +883,7 @@
           </div>
 
           <div class="project-card" style="transition-delay: .5s">
-            <div class="project-visual" style="background: linear-gradient(135deg, rgba(139,92,246,.25), rgba(0,217,255,.15))">
+            <div class="project-visual" style="background: linear-gradient(135deg, rgba(124,58,237,.15), rgba(8,145,178,.1))">
               <div class="project-tag">Operations</div>
             </div>
             <div class="project-content">
@@ -896,7 +897,7 @@
           </div>
 
           <div class="project-card" style="transition-delay: .6s">
-            <div class="project-visual" style="background: linear-gradient(135deg, rgba(0,255,163,.25), rgba(255,184,0,.15))">
+            <div class="project-visual" style="background: linear-gradient(135deg, rgba(5,150,105,.15), rgba(217,119,6,.1))">
               <div class="project-tag">Transformation</div>
             </div>
             <div class="project-content">
