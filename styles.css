@@ -272,10 +272,10 @@ a.card:hover, .card:hover{transform: translateY(-4px); box-shadow: 0 22px 40px -
 /* Contact */
 .contact{display: grid; grid-template-columns: repeat(12, minmax(0,1fr)); gap: var(--gap); align-items: center; background: var(--ink); color: var(--egg); border-radius: var(--r); padding: 44px; overflow: hidden; position: relative}
 .contact p{grid-column: 1 / span 8; font-size: clamp(24px, 2.6vw, 34px); line-height: 1.25; letter-spacing: -.01em}
-.contact .button{grid-column: 9 / span 4; justify-self: end; min-height: 64px; padding: 0 34px; font-size: 16px; background: var(--egg); color: var(--ink)}
+.contact .button{position: relative; z-index: 1; grid-column: 9 / span 4; justify-self: end; min-height: 64px; padding: 0 34px; font-size: 16px; background: var(--egg); color: var(--ink)}
 .contact .button svg{width: 14px; height: 14px}
 .contact .button:hover{background: var(--accent); color: #fff}
-.contact .deco{position: absolute; right: -60px; top: -60px; width: 220px; opacity: .08; animation: spin 40s linear infinite}
+.contact .deco{position: absolute; right: -60px; top: -60px; width: 220px; opacity: .08; animation: spin 40s linear infinite; pointer-events: none}
 
 /* Footer */
 .site-footer{padding: 40px 0 48px}
