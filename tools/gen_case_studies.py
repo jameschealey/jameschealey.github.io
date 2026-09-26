@@ -38,12 +38,17 @@ HEAD = '''<!doctype html>
         <a href="https://www.linkedin.com/in/jameschealey/" target="_blank" rel="noreferrer">LinkedIn <svg class="arrow" viewBox="0 0 12 12"><path d="M2 10L10 2M4 2h6v6"/></svg></a>
       </div>
     </div>
+    <div class="subbar">
+      <div class="wrap">
+        <a class="back-pill" href="/#work"><span>&larr;</span> All work</a>
+        <p class="subbar-title">{title}</p>
+      </div>
+    </div>
   </header>
 
   <main style="--c: var({color})">
     <section class="cs-hero">
       <div class="wrap">
-        <a class="meta back" href="/#work">&larr; All work</a>
         <h1>{title}</h1>
         <p class="lede">{lede}</p>
 {graphic_block}
