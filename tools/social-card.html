@@ -1,0 +1,50 @@
+<!doctype html>
+<!-- Source for social.png (1200x630). Render with:
+     msedge --headless=new --force-device-scale-factor=1 --window-size=1200,630 --screenshot=social.png tools/social-card.html -->
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<link href="https://fonts.googleapis.com/css2?family=IBM+Plex+Mono:wght@400&family=IBM+Plex+Sans:wght@400;700&display=swap" rel="stylesheet">
+<style>
+  *{margin: 0; padding: 0; box-sizing: border-box}
+  html, body{width: 1200px; height: 630px; overflow: hidden; background: #d8d7ce; color: #0b1418; font-family: 'IBM Plex Sans', Arial, sans-serif}
+  .card{display: grid; grid-template-columns: 1fr 440px; gap: 48px; align-items: center; height: 100%; padding: 0 72px}
+  .meta{font-family: 'IBM Plex Mono', monospace; font-size: 22px; letter-spacing: .06em; text-transform: uppercase; color: #1a3c4d}
+  h1{margin-top: 18px; font-size: 104px; font-weight: 700; letter-spacing: -.04em; line-height: .95}
+  .role{margin-top: 22px; font-size: 34px; color: #3f4b50}
+  .chips{display: flex; gap: 12px; margin-top: 40px}
+  .chips span{width: 44px; height: 44px; border-radius: 10px}
+  svg{width: 440px; height: 440px; border-radius: 22px; display: block}
+</style>
+</head>
+<body>
+  <div class="card">
+    <div>
+      <p class="meta">jameschealey.com</p>
+      <h1>James Healey</h1>
+      <p class="role">Product lead, robotics · New York</p>
+      <div class="chips">
+        <span style="background:#445b7f"></span><span style="background:#d9533f"></span><span style="background:#2a6f97"></span><span style="background:#4a4e9c"></span><span style="background:#22439e"></span><span style="background:#2f8a82"></span>
+      </div>
+    </div>
+    <svg viewBox="0 0 440 440" xmlns="http://www.w3.org/2000/svg">
+      <rect width="440" height="440" fill="#22405a"/>
+      <g stroke="rgba(243,239,212,.08)">
+        <path d="M40 0V440M80 0V440M120 0V440M160 0V440M200 0V440M240 0V440M280 0V440M320 0V440M360 0V440M400 0V440M0 40H440M0 80H440M0 120H440M0 160H440M0 200H440M0 240H440M0 280H440M0 320H440M0 360H440M0 400H440"/>
+      </g>
+      <circle cx="200" cy="240" r="120" fill="rgba(240,160,32,.1)" stroke="rgba(240,160,32,.7)" stroke-width="2" stroke-dasharray="7 7"/>
+      <circle cx="200" cy="240" r="54" fill="rgba(239,106,82,.22)" stroke="rgba(239,106,82,.9)" stroke-width="2"/>
+      <circle cx="200" cy="240" r="10" fill="#ef6a52" stroke="#f3efd4" stroke-width="4"/>
+      <g fill="#f3efd4">
+        <rect x="248" y="96" width="24" height="24" rx="4"/><rect x="88" y="136" width="24" height="24" rx="4"/>
+        <rect x="328" y="216" width="24" height="24" rx="4"/><rect x="128" y="336" width="24" height="24" rx="4"/>
+        <rect x="368" y="376" width="24" height="24" rx="4"/><rect x="48" y="56" width="24" height="24" rx="4"/>
+        <rect x="258" y="298" width="24" height="24" rx="4"/>
+      </g>
+      <rect x="254" y="292" width="32" height="32" rx="6" fill="none" stroke="#f0a020" stroke-width="3"/>
+      <g fill="#4f9b62"><circle cx="260" cy="108" r="3"/><circle cx="100" cy="148" r="3"/><circle cx="340" cy="228" r="3"/><circle cx="140" cy="348" r="3"/><circle cx="380" cy="388" r="3"/><circle cx="60" cy="68" r="3"/></g>
+      <circle cx="270" cy="310" r="3" fill="#f0a020"/>
+    </svg>
+  </div>
+</body>
+</html>
