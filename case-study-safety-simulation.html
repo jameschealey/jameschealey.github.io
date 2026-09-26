@@ -1,0 +1,98 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>Simulating the safety system in 3D | James Healey</title>
+  <meta name="description" content="A Three.js simulation that shows how a robotics safety system works in action." />
+  <meta name="theme-color" content="#d8d7ce" />
+  <link rel="icon" href="favicon.svg" type="image/svg+xml">
+  <meta property="og:type" content="article" />
+  <meta property="og:title" content="Simulating the safety system in 3D" />
+  <meta property="og:description" content="A Three.js simulation that shows how a robotics safety system works in action." />
+  <meta property="og:image" content="https://jameschealey.com/social.png" />
+  <meta name="twitter:card" content="summary_large_image" />
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=IBM+Plex+Mono:wght@400;500&family=IBM+Plex+Sans:wght@400;700&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="styles.css">
+  <script>document.documentElement.className += ' js';</script>
+  <script type="importmap">{"imports": {"three": "https://cdn.jsdelivr.net/npm/three@0.160.0/build/three.module.js", "three/addons/": "https://cdn.jsdelivr.net/npm/three@0.160.0/examples/jsm/"}}</script>
+</head>
+<body>
+  <header class="site-header">
+    <div class="wrap">
+      <a class="logo" href="/" aria-label="James Healey, home">
+        <svg viewBox="0 0 100 100" aria-hidden="true"><circle class="ring" cx="50" cy="50" r="45"/><g class="bot"><rect x="30" y="30" width="40" height="40" rx="6"/></g><circle class="eye" cx="50" cy="50" r="8"/></svg>
+        <span>James Healey</span>
+      </a>
+      <nav class="site-nav" aria-label="Main">
+        <a href="/#work">Work</a>
+        <a href="/#how">How I work</a>
+        <a href="/#outside">Outside work</a>
+        <a href="/#contact">Contact</a>
+      </nav>
+      <div class="header-right">
+        <a href="https://www.linkedin.com/in/jameschealey/" target="_blank" rel="noreferrer">LinkedIn <svg class="arrow" viewBox="0 0 12 12"><path d="M2 10L10 2M4 2h6v6"/></svg></a>
+      </div>
+    </div>
+  </header>
+
+  <main style="--c: var(--c-indigo)">
+    <section class="cs-hero">
+      <div class="wrap">
+        <a class="meta back" href="/#work">&larr; All work</a>
+        <h1>Simulating the safety system in 3D</h1>
+        <p class="lede">A safety system mostly does its job by making sure nothing happens, which makes it hard to explain. I used Three.js to build a simulation that shows how the system works in action, modeled on 80 buildings in North America. You can try a simplified version of it below.</p>
+        <div class="cs-graphic sim3d reveal">
+          <div class="sim-fallback" data-graphic="sim"></div>
+          <canvas aria-label="3D simulation of robots slowing down and stopping as a person gets close"></canvas>
+          <div class="floor-bar"><span>Click the floor to move the person. Drag to look around.</span><span>Slowed <b class="amber" data-slowed>0</b> &nbsp; Stopped <b data-stopped>0</b></span></div>
+        </div>
+        <div class="metrics">
+          <div class="metric reveal" style="--i:0"><span class="ico"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M12 21s-6.5-5.8-6.5-10.5a6.5 6.5 0 0 1 13 0C18.5 15.2 12 21 12 21z"/><circle cx="12" cy="10.5" r="2.3"/></svg></span><span class="val"><span data-count="80" data-prefix="" data-suffix="">80</span></span><span class="lbl">buildings</span></div>
+          <div class="metric reveal" style="--i:1"><span class="ico"><svg viewBox="0 0 24 24" aria-hidden="true"><circle cx="12" cy="12" r="9"/><path d="M3 12h18M12 3c2.8 2.8 2.8 15.2 0 18M12 3c-2.8 2.8-2.8 15.2 0 18"/></svg></span><span class="val">NA</span><span class="lbl">North America</span></div>
+          <div class="metric reveal" style="--i:2"><span class="ico"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M12 3l8 4.5v9L12 21l-8-4.5v-9z"/><path d="M4 7.5l8 4.5 8-4.5M12 12v9"/></svg></span><span class="val">3D</span><span class="lbl">built with Three.js</span></div>
+        </div>
+      </div>
+    </section>
+
+    <div class="wrap cs-layout">
+      <article class="cs-body">
+        <h2>What I built</h2>
+        <p>A 3D simulation of a robotic floor. You can watch how the safety system responds as people and robots move through the same space, which is hard to picture from slides and specs.</p>
+
+        <h2>Why it matters</h2>
+        <p>When everyone can watch the system work, there's far less room for misunderstanding. Design reviews move faster, the engineering work that follows moves faster, and the team comes to a shared understanding of the objective sooner.</p>
+
+        <h2>Try the simplified version</h2>
+        <p>The simulation at the top of this page is a small recreation I built for this website, not the original. Robots drive around a grid carrying shelves. The person has two zones around them. A robot inside the outer zone slows down and shows an amber light. A robot inside the inner zone stops, turns red and waits until the person moves away. The person can't walk through robots, so they have to go around them.</p>
+        <ul>
+          <li><strong>Click the floor</strong> to send the person somewhere.</li>
+          <li><strong>Drag</strong> to orbit the camera around the floor.</li>
+          <li>The counter in the corner shows how many robots are slowed and stopped at any moment.</li>
+        </ul>
+        <div class="aside"><span></span><p>The original simulation and the details of the real safety system are left out on purpose. I'm happy to go deeper on the approach in conversation.</p></div>
+      </article>
+    </div>
+
+    <div class="wrap">
+      <nav class="cs-next" aria-label="More case studies">
+        <a href="case-study-global-rollout.html"><span class="meta">&larr; Previous</span><span class="title">Retrofitting a live robotics network</span></a>
+        <a href="case-study-eu-pilot.html"><span class="meta">Next &rarr;</span><span class="title">Bringing a safety platform to Europe</span></a>
+      </nav>
+    </div>
+  </main>
+
+  <footer class="site-footer">
+    <div class="wrap meta">
+      <span>&copy; 2026 James Healey</span>
+      <span><a href="/">Home</a> &nbsp;/&nbsp; <a href="https://www.linkedin.com/in/jameschealey/" target="_blank" rel="noreferrer">LinkedIn</a></span>
+    </div>
+  </footer>
+
+  <button class="to-top" type="button" aria-label="Back to top"><svg viewBox="0 0 16 16" aria-hidden="true"><path d="M8 13V3M3.5 7.5L8 3l4.5 4.5"/></svg></button>
+  <script src="site.js"></script>
+  <script type="module" src="sim.js"></script>
+</body>
+</html>
