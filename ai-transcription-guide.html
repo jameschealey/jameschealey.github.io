@@ -1,0 +1,393 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>Organize a voice transcript with AI | James Healey</title>
+  <meta name="description" content="A guide to record your thoughts, make a transcript, and use any AI tool to put your words in a logical order without changes to the words." />
+  <!-- Shared by direct link only. Not in the site nav. Search engines must not list it. -->
+  <meta name="robots" content="noindex, nofollow" />
+  <meta name="theme-color" content="#d8d7ce" />
+  <link rel="icon" href="favicon.svg" type="image/svg+xml">
+  <meta property="og:type" content="article" />
+  <meta property="og:title" content="Organize a voice transcript with AI" />
+  <meta property="og:description" content="Record your thoughts. Let any AI tool put them in order. Keep every word." />
+  <meta property="og:image" content="https://jameschealey.com/social.png" />
+  <meta name="twitter:card" content="summary_large_image" />
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=IBM+Plex+Mono:wght@400;500&family=IBM+Plex+Sans:wght@400;700&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="styles.css">
+  <script>document.documentElement.className += ' js';</script>
+  <style>
+    /* Guide page: a narrow text column and a few extra blocks */
+    html{scroll-padding-top: 150px}
+    .guide .cs-hero .lede{color: var(--ink); max-width: 820px}
+    .guide .cs-body{max-width: 820px}
+    .guide .cs-body h2{font-size: 30px}
+    .guide .cs-body h3{margin: 30px 0 8px; font-size: 21px; font-weight: 700; letter-spacing: -.01em}
+    .guide .cs-body ul, .guide .cs-body ol{margin-top: 14px; margin-bottom: 14px}
+    .guide .cs-body ol{list-style: none; counter-reset: step}
+    .guide .cs-body ol > li{counter-increment: step; padding-left: 40px}
+    .guide .cs-body ol > li::before{content: counter(step); top: 0; width: 26px; height: 26px; border-radius: 50%; display: grid; place-items: center; background: var(--ink); color: var(--egg); font-family: var(--mono); font-size: 13px; line-height: 1}
+    .guide code{font-family: var(--mono); font-size: .88em; background: var(--surface); padding: 1px 6px; border-radius: 6px}
+
+    .flow{list-style: none; display: grid; grid-template-columns: repeat(5, minmax(0,1fr)); gap: 12px; margin-top: 18px}
+    .guide .cs-body .flow li{padding: 0; margin: 0}
+    .guide .cs-body .flow li::before{display: none}
+    .flow a{display: block; height: 100%; padding: 16px; border-radius: var(--r); background: var(--surface); text-decoration: none; transition: transform .25s var(--ease)}
+    .flow a:hover{transform: translateY(-3px)}
+    .flow .num{display: inline-grid; place-items: center; width: 30px; height: 30px; border-radius: 50%; background: var(--c); color: var(--egg); font-family: var(--mono); font-size: 13px}
+    .flow b{display: block; margin-top: 10px; font-size: 17px}
+
+    .caution{display: flex; margin: 18px 0; background: var(--surface); border-radius: var(--r); overflow: hidden}
+    .caution > span{flex: none; width: 8px; background: var(--accent)}
+    .caution p{padding: 14px 18px}
+    .caution strong{text-transform: uppercase; font-family: var(--mono); font-size: 13px; letter-spacing: .05em}
+
+    .copybox{margin: 18px 0; border-radius: var(--r); overflow: hidden; background: var(--ink); color: var(--egg)}
+    .copybox-bar{display: flex; justify-content: space-between; align-items: center; gap: 12px; padding: 8px 8px 8px 18px; border-bottom: 1px solid rgba(243,239,212,.18)}
+    .copybox-bar .meta{color: var(--egg)}
+    .copy-btn{min-height: 40px; padding: 0 16px; border: 0; border-radius: 10px; background: var(--egg); color: var(--ink); font-family: var(--mono); font-size: 13px; letter-spacing: .05em; text-transform: uppercase; cursor: pointer; transition: background .2s ease, color .2s ease}
+    .copy-btn:hover{background: var(--accent); color: #fff}
+    .copybox pre{margin: 0; padding: 18px; overflow-x: auto; white-space: pre-wrap; font-family: var(--mono); font-size: 13.5px; line-height: 1.65}
+    .copybox pre code{background: none; padding: 0; font-size: inherit}
+
+    @media (max-width: 860px){
+      .flow{grid-template-columns: 1fr 1fr}
+    }
+    @media (max-width: 680px){
+      .guide .cs-body h2{font-size: 25px}
+    }
+  </style>
+</head>
+<body class="guide">
+  <header class="site-header">
+    <div class="wrap">
+      <a class="logo" href="/" aria-label="James Healey, home">
+        <svg viewBox="0 0 100 100" aria-hidden="true"><circle class="ring" cx="50" cy="50" r="45"/><g class="bot"><rect x="30" y="30" width="40" height="40" rx="6"/></g><circle class="eye" cx="50" cy="50" r="8"/></svg>
+        <span>James Healey</span>
+      </a>
+      <nav class="site-nav" aria-label="Main">
+        <a href="/#work">Work</a>
+        <a href="/#how">How I work</a>
+        <a href="/#outside">Outside work</a>
+        <a href="/#contact">Contact</a>
+      </nav>
+      <div class="header-right">
+        <a href="https://www.linkedin.com/in/jameschealey/" target="_blank" rel="noreferrer">LinkedIn <svg class="arrow" viewBox="0 0 12 12"><path d="M2 10L10 2M4 2h6v6"/></svg></a>
+      </div>
+    </div>
+    <div class="subbar">
+      <div class="wrap">
+        <a class="back-pill" href="/"><span>&larr;</span> Home</a>
+        <p class="subbar-title">Guide: AI transcript organizer</p>
+      </div>
+    </div>
+  </header>
+
+  <main style="--c: var(--c-teal)">
+    <section class="cs-hero">
+      <div class="wrap">
+        <h1>Organize a voice transcript with AI. Keep every word.</h1>
+        <p class="lede">This guide shows how to record your thoughts, make a transcript, and use an AI tool to put the transcript in a logical order. A steering file tells the AI to move your words, not to change them. The steering file works with Claude, ChatGPT, Gemini, and other AI tools.</p>
+        <div class="cs-graphic reveal">
+          <svg viewBox="0 0 1000 380" preserveAspectRatio="xMidYMid meet" role="img" aria-label="Mixed lines of text on the left. The same lines on the right, in groups under headings.">
+            <g>
+              <rect x="80" y="75" width="300" height="16" rx="8" fill="#f3efd4"/>
+              <rect x="80" y="105" width="220" height="16" rx="8" fill="#f0a020"/>
+              <rect x="80" y="135" width="260" height="16" rx="8" fill="#ff8a73"/>
+              <rect x="80" y="165" width="180" height="16" rx="8" fill="#f3efd4"/>
+              <rect x="80" y="195" width="320" height="16" rx="8" fill="#ff8a73"/>
+              <rect x="80" y="225" width="280" height="16" rx="8" fill="#f0a020"/>
+              <rect x="80" y="255" width="240" height="16" rx="8" fill="#f3efd4"/>
+              <rect x="80" y="285" width="200" height="16" rx="8" fill="#ff8a73"/>
+            </g>
+            <path d="M440 190 H540" stroke="#f3efd4" stroke-width="3" stroke-linecap="round"/>
+            <path d="M525 176 L545 190 L525 204" fill="none" stroke="#f3efd4" stroke-width="3" stroke-linecap="round" stroke-linejoin="round"/>
+            <g>
+              <rect x="600" y="30" width="140" height="16" rx="4" fill="rgba(11,20,24,.55)"/>
+              <rect x="600" y="60" width="300" height="16" rx="8" fill="#f3efd4"/>
+              <rect x="600" y="90" width="180" height="16" rx="8" fill="#f3efd4"/>
+              <rect x="600" y="120" width="240" height="16" rx="8" fill="#f3efd4"/>
+              <rect x="600" y="150" width="140" height="16" rx="4" fill="rgba(11,20,24,.55)"/>
+              <rect x="600" y="180" width="220" height="16" rx="8" fill="#f0a020"/>
+              <rect x="600" y="210" width="280" height="16" rx="8" fill="#f0a020"/>
+              <rect x="600" y="240" width="140" height="16" rx="4" fill="rgba(11,20,24,.55)"/>
+              <rect x="600" y="270" width="260" height="16" rx="8" fill="#ff8a73"/>
+              <rect x="600" y="300" width="320" height="16" rx="8" fill="#ff8a73"/>
+              <rect x="600" y="330" width="200" height="16" rx="8" fill="#ff8a73"/>
+            </g>
+          </svg>
+        </div>
+        <div class="metrics">
+          <div class="metric reveal" style="--i:0"><span class="ico"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M6 3h8l4 4v14H6z"/><path d="M14 3v4h4M9 12h6M9 16h6"/></svg></span><span class="val">1</span><span class="lbl">steering file</span></div>
+          <div class="metric reveal" style="--i:1"><span class="ico"><svg viewBox="0 0 24 24" aria-hidden="true"><rect x="4" y="4" width="7" height="7" rx="1.5"/><rect x="13" y="4" width="7" height="7" rx="1.5"/><rect x="4" y="13" width="7" height="7" rx="1.5"/><rect x="13" y="13" width="7" height="7" rx="1.5"/></svg></span><span class="val">Any</span><span class="lbl">AI tool or agent</span></div>
+          <div class="metric reveal" style="--i:2"><span class="ico"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M5 12.5l4.5 4.5L19 7.5"/></svg></span><span class="val">0</span><span class="lbl">changed words</span></div>
+        </div>
+      </div>
+    </section>
+
+    <div class="wrap cs-layout">
+      <article class="cs-body">
+
+        <h2 id="overview">How the workflow operates</h2>
+        <p>The workflow has five steps. Do the first step one time. Do the other steps each time that you record.</p>
+        <ul class="flow">
+          <li><a href="#steering"><span class="num">1</span><b>Add the steering file</b></a></li>
+          <li><a href="#record"><span class="num">2</span><b>Record</b></a></li>
+          <li><a href="#transcribe"><span class="num">3</span><b>Make a transcript</b></a></li>
+          <li><a href="#organize"><span class="num">4</span><b>Organize</b></a></li>
+          <li><a href="#check"><span class="num">5</span><b>Check</b></a></li>
+        </ul>
+
+        <h3>What a steering file is</h3>
+        <p>A steering file is a set of written instructions for an AI tool. The AI reads the file before it reads your transcript. Other names for it are "custom instructions", "system prompt", "project instructions", and "agent instructions".</p>
+        <p>Without a steering file, most AI tools rewrite text. They correct grammar, make sentences shorter, and replace words. This steering file stops that. The AI can move your sentences and add headings. It cannot change your words.</p>
+
+        <h2 id="steering">Step 1: Add the steering file to your AI tool</h2>
+        <p>Copy the steering file below. Then follow the instructions for your AI tool.</p>
+
+        <div class="copybox">
+          <div class="copybox-bar"><span class="meta">Steering file</span><button class="copy-btn" type="button" data-copy="steering-file">Copy</button></div>
+<pre><code id="steering-file"># Steering file: transcript organizer
+
+## Your task
+You organize transcripts of spoken words. You do not edit them.
+The user gives you a transcript. You give back the same words in a logical order, with headings.
+If the message is only a transcript, do this task. The user does not need to give other instructions.
+
+## Rule 1: Keep the author's words
+This rule is the most important rule. It has priority over all other instructions.
+- Use only the words in the transcript.
+- Do not add words to a sentence.
+- Do not remove words from a sentence. The only exception is the "Filler words" option below.
+- Do not change a word. Do not use a synonym.
+- Do not correct grammar, spelling, or word choice.
+- Keep the words of each sentence in their original order.
+- Do not summarize, paraphrase, explain, or shorten the text.
+- Keep incomplete sentences as they are.
+- If the author says the same thing two times, keep the two sentences.
+
+## Rule 2: What you can change
+You can do only these things:
+1. Move sentences and paragraphs to a different position.
+2. Put sentences about the same topic together.
+3. Add headings.
+4. Add paragraph breaks.
+5. Add punctuation and capital letters where the transcript has none. Do not change a word to do this.
+6. Change a spoken list into a bulleted list. Keep all the words of each item.
+
+## Rule 3: How to find the logical order
+1. Read the full transcript before you start.
+2. Find the main topics.
+3. Put the topics in a logical order. Put background and context first. Put the main points next. Put decisions, actions, and open questions last.
+4. In each topic, put the sentences in a logical order. If a sentence depends on a different sentence, put it after that sentence.
+5. Keep a story or an example together, in its original order. Do not divide it.
+6. If a sentence does not fit a topic, put it under the heading "Other points".
+7. If the user gives a purpose (for example, "this is for a blog post"), use the purpose to choose the order of the topics. Rule 1 always applies.
+
+## Rule 4: Headings
+- Use words from the transcript in the headings when possible.
+- Keep each heading short: 2 to 8 words.
+- Use "##" for main topics and "###" for subtopics.
+
+## Rule 5: Do not add other text
+- Headings and the markers in Rules 6 and 7 are the only text that you write.
+- Do not add an introduction, a summary, or a conclusion.
+- Do not add comments, advice, or questions before or after the result.
+
+## Rule 6: When you are not sure
+- If a word looks like a transcription error, keep the word. Write [?] after it.
+- Do not guess a correction.
+- If you cannot move a part of the text without a change to its words, keep that part in its original order.
+
+## Rule 7: Long transcripts
+- Include all of the transcript in the result. Do not skip text.
+- If the result is too long for one message, stop at the end of a section and write [CONTINUES].
+- When the user writes "continue", give the next part.
+
+## Options
+The user can change these settings.
+- Filler words: KEEP
+  (KEEP: keep all filler words. REMOVE: remove only "um", "uh", "er", and "ah". Remove no other words.)
+- Headings: YES
+  (YES: add headings. NO: do not add headings. Use paragraph breaks only.)</code></pre>
+        </div>
+
+        <div class="caution"><span></span><p><strong>Note:</strong> Menu names in AI tools change often. Some functions also need a paid plan. If you cannot find a function, use the method in "Any other AI tool".</p></div>
+
+        <h3>Claude</h3>
+        <ol>
+          <li>Open Claude (claude.ai or the Claude app).</li>
+          <li>Make a new project. Give it a name, for example "Transcript organizer".</li>
+          <li>Open the project instructions. Paste the steering file.</li>
+          <li>Start each new transcript as a new chat in this project.</li>
+        </ol>
+
+        <h3>ChatGPT</h3>
+        <ol>
+          <li>Open ChatGPT (chatgpt.com or the ChatGPT app).</li>
+          <li>Make a new project. Open the project settings.</li>
+          <li>Paste the steering file into the instructions.</li>
+          <li>Start each new transcript as a new chat in this project.</li>
+        </ol>
+        <p>You can also make a custom GPT. Paste the steering file into its "Instructions" field.</p>
+
+        <h3>Gemini</h3>
+        <ol>
+          <li>Open Gemini (gemini.google.com or the Gemini app).</li>
+          <li>Make a new Gem. Give it a name, for example "Transcript organizer".</li>
+          <li>Paste the steering file into the "Instructions" field. Save the Gem.</li>
+          <li>Start each new transcript as a new chat with this Gem.</li>
+        </ol>
+
+        <h3>AI agents that read files</h3>
+        <p>Claude Code, Codex, Gemini CLI, Cursor, GitHub Copilot, and other agents read an instructions file in your work folder.</p>
+        <ol>
+          <li>Make a folder for your transcripts.</li>
+          <li>Save the steering file in that folder. Use the file name that your agent reads:
+            <ul>
+              <li><code>CLAUDE.md</code> for Claude Code</li>
+              <li><code>GEMINI.md</code> for Gemini CLI</li>
+              <li><code>AGENTS.md</code> for Codex, Cursor, GitHub Copilot, and most other agents</li>
+            </ul>
+          </li>
+          <li>Save each transcript in the folder as a text file, for example <code>2026-11-10-transcript.txt</code>.</li>
+          <li>Tell the agent: "Organize 2026-11-10-transcript.txt. Save the result as 2026-11-10-organized.md."</li>
+        </ol>
+
+        <h3>Any other AI tool</h3>
+        <ol>
+          <li>Look in the settings for "custom instructions", "system prompt", or "instructions". If the tool has one of these, paste the steering file there.</li>
+          <li>If the tool does not have one of these, paste the steering file at the start of each new chat. Paste the transcript after it, in the same message.</li>
+        </ol>
+
+        <h2 id="record">Step 2: Record your thoughts</h2>
+        <ul>
+          <li>Use the voice recorder app on your phone or computer.</li>
+          <li>Record in a quiet room. Hold the microphone near your mouth. Clear audio gives a better transcript.</li>
+          <li>Speak in your usual way. You do not have to speak in a logical order. The AI does that in Step 4.</li>
+          <li>You can record more than one audio file on the same subject. Put the transcripts together in Step 3.</li>
+        </ul>
+
+        <h2 id="transcribe">Step 3: Make a transcript</h2>
+        <div class="caution"><span></span><p><strong>Caution:</strong> Your audio can contain private information. Before you use a tool, read its privacy settings. Some tools keep your data or use it to train AI models. A tool that operates only on your device keeps the audio on your device.</p></div>
+        <p>Use one of these tools to change your audio into text:</p>
+        <ul>
+          <li><strong>iPhone:</strong> The Voice Memos app and the Notes app can make a transcript of an audio file (iOS 18 and later).</li>
+          <li><strong>Android:</strong> On Pixel phones, use the Recorder app. Many other Android phones have a recorder app that makes transcripts.</li>
+          <li><strong>Mac or Windows:</strong> Use the Transcribe function in Microsoft Word (Microsoft 365). On a Mac, MacWhisper makes transcripts on your computer.</li>
+          <li><strong>Calls:</strong> Zoom, Google Meet, and Microsoft Teams can make a transcript of a call.</li>
+          <li><strong>An AI tool:</strong> Some AI tools, for example Gemini, accept audio files. Upload the audio and write: "Write a word-for-word transcript of this audio. Do not change or remove words." Use this transcript in Step 4, in a new chat.</li>
+        </ul>
+        <p>When you have the transcript, do these steps:</p>
+        <ol>
+          <li>Copy all of the transcript text.</li>
+          <li>Save a copy of the original transcript. You use it in Step 5 to check the result.</li>
+        </ol>
+
+        <h2 id="organize">Step 4: Organize the transcript</h2>
+        <ol>
+          <li>Open a new chat in your project, Gem, or custom GPT.</li>
+          <li>Paste the full transcript.</li>
+          <li>Optional: Before the transcript, write the purpose in one line, for example "This is for a blog post." The AI uses the purpose to choose the order of the topics.</li>
+          <li>Send the message. You do not have to write other instructions.</li>
+          <li>If the result stops with [CONTINUES], write "continue". Do this until the AI gives all of the result.</li>
+        </ol>
+
+        <h2 id="check">Step 5: Check the result</h2>
+        <div class="caution"><span></span><p><strong>Warning:</strong> AI tools can make errors, also with a steering file. Always check the result before you use or share it.</p></div>
+        <ol>
+          <li>Compare the word counts. Paste the original transcript and the result into a word counter, for example Tools &gt; Word count in Google Docs. The result has a small number of extra words from the headings. If the result has fewer words than the transcript, text is missing. (This is not true if you set "Filler words" to REMOVE.)</li>
+          <li>Select three to five sentences in the result. Find each sentence in the original transcript. Make sure that the words are the same.</li>
+          <li>Find the words with [?]. Correct them yourself.</li>
+        </ol>
+
+        <h3>Optional: Use AI to check the result</h3>
+        <p>Open a new chat <strong>without</strong> the steering file. Copy the prompt below. Paste the original transcript and the result into it. Send it.</p>
+        <div class="copybox">
+          <div class="copybox-bar"><span class="meta">Check prompt</span><button class="copy-btn" type="button" data-copy="check-prompt">Copy</button></div>
+<pre><code id="check-prompt">Compare text A and text B.
+Text A is a transcript. Text B is the same transcript in a different order, with headings.
+Ignore headings, punctuation, capital letters, and line breaks.
+1. List each sentence in A that is not in B.
+2. List each sentence in B that is not in A.
+3. List each word that is different between a sentence in A and the same sentence in B.
+If you find no differences, write "No differences".
+
+Text A:
+[paste the original transcript here]
+
+Text B:
+[paste the result here]</code></pre>
+        </div>
+
+        <h2 id="problems">Problems and solutions</h2>
+
+        <h3>The AI changed my words</h3>
+        <ol>
+          <li>Make sure that the steering file is in the project, Gem, or instructions settings. A steering file in an old chat does not apply to a new chat.</li>
+          <li>Start a new chat. Paste the transcript again.</li>
+          <li>If the problem continues, write: "Obey Rule 1. Use only my words. Do the task again."</li>
+        </ol>
+
+        <h3>The AI added a summary or comments</h3>
+        <p>Write: "Obey Rule 5. Remove all text that is not a heading or a sentence from the transcript."</p>
+
+        <h3>The result stops before the end</h3>
+        <p>Write "continue". If the AI does not continue, divide the transcript into two parts. Organize each part in a new chat.</p>
+
+        <h3>The transcript has incorrect words</h3>
+        <p>Transcription tools sometimes write a word incorrectly. The steering file tells the AI to keep these words and to put [?] after them. Correct these words yourself in the result.</p>
+
+        <h2 id="change">Change the steering file</h2>
+        <p>The "Options" section at the end of the steering file has two settings. To change a setting, edit the word in capital letters. Then save the steering file again in your AI tool.</p>
+        <ul>
+          <li><strong>Filler words:</strong> KEEP or REMOVE. With REMOVE, the AI removes only "um", "uh", "er", and "ah".</li>
+          <li><strong>Headings:</strong> YES or NO. With NO, the AI uses paragraph breaks only.</li>
+        </ul>
+        <p>Do not change Rule 1. Rule 1 is the rule that keeps your words the same.</p>
+
+      </article>
+    </div>
+  </main>
+
+  <footer class="site-footer">
+    <div class="wrap meta">
+      <span>&copy; 2026 James Healey</span>
+      <span><a href="/">Home</a> &nbsp;/&nbsp; <a href="https://www.linkedin.com/in/jameschealey/" target="_blank" rel="noreferrer">LinkedIn</a></span>
+    </div>
+  </footer>
+
+  <button class="to-top" type="button" aria-label="Back to top"><svg viewBox="0 0 16 16" aria-hidden="true"><path d="M8 13V3M3.5 7.5L8 3l4.5 4.5"/></svg></button>
+  <script src="site.js"></script>
+  <script>
+    // Copy buttons: copy the text of the block that data-copy names.
+    document.querySelectorAll('[data-copy]').forEach(function (btn) {
+      btn.addEventListener('click', function () {
+        var text = document.getElementById(btn.getAttribute('data-copy')).textContent;
+        var done = function () {
+          btn.textContent = 'Copied';
+          setTimeout(function () { btn.textContent = 'Copy'; }, 2000);
+        };
+        var fallback = function () {
+          var area = document.createElement('textarea');
+          area.value = text;
+          document.body.appendChild(area);
+          area.select();
+          document.execCommand('copy');
+          area.remove();
+          done();
+        };
+        if (navigator.clipboard && window.isSecureContext) {
+          navigator.clipboard.writeText(text).then(done, fallback);
+        } else {
+          fallback();
+        }
+      });
+    });
+  </script>
+  <script data-goatcounter="https://genheals.goatcounter.com/count" async src="//gc.zgo.at/count.js"></script>
+</body>
+</html>
